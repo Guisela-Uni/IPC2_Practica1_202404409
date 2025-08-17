@@ -1,63 +1,72 @@
+from clases.libroDigital import libroDigital
+from clases.libroFisico import libroFisico
+from clases.mastermind import mastermind
 import os
+import time
+
+mind = mastermind() #definiendo mastermind
 #Menú inicial
 def menu1():
-    print("--------------- BIENVENIDO A LA BIBLIOTECA  ---------------")
+    print("------------------- BIENVENIDO A LA BIBLIOTECA  -------------------")
     print("Aqui puedes gestionar el prestamo de tus libros, porfavor, selecciona una opción: ")
     print("1. Registrar libro")
     print("2. Gestionar materiales")
     print("3. Salir")
 
-def menu2():
-    print("--------------- REGISTRO DE LIBROS ---------------")
-    print("Selecciona que tipo de material bibliotecario quieres registrar")
-    print("1. Libro fisico")
-    print("2. Libro digital")
-    print("3. Regresar al menu")
+#Registrar libro
+def registrarLibro():
+    print("-------------------  REGISTRAR LIBRO -------------------")
+    print("| 1. Registrar libro fisico                             |")
+    print("| 2. Registrar libro virtual                            |")
+    print("| 3. Regresar al menu                                   |")
+    print("|-------------------------------------------------------|")
+    opcion = int(input("ingresa tu opcion: "))
+    match opcion:
+        case 1:
+            agregarLibroFisico()
+        case 2:
+            agregarLibroDigital()
+        case 3:
+            print("Volviendo al menu principal")
+            time.sleep(1)
+            print("")
 
-def menu3():
-    print("--------------- Gestion de materiales ---------------")
-    print("Selecciona que tipo operación desesas realizar con los libros del sistema: ")
-    print("1. Prestar libro")
-    print("2. Devolver libro")
-    print("3. Consultar información de libros")
-    print("Regresar al menu")
+def agregarLibroDigital():
+    print("---------------- REGISTRAR LIBRO DIGITAL ----------------")
+    print("|Escriba los datos que se solicitan:                     |")
+    print("| Titulo del libro                                       |")
+    titulo = input()
+    print("| Autor del libro                                        |")
+    autor = input()
+    print("| Codigo único:                                          |")
+    codigo = int(input())
+    print("| Tamaño del arhivo                                      |")
+    pesoArchivo = int(input())
 
-def registro():
-    while True:
-        menu2()
-        opcion1=input("opcion elegida: ")
-        if opcion1 =="1":
-            regFisico() #funcion para registrar libro fisico
+    nuevoLibroDigital = libroDigital(titulo, autor, codigo, pesoArchivo)
+    mind.nuevoLibro(nuevoLibroDigital)
+    print("<<<  Libro digital creado exitosamente  >>>")
+    time.sleep(1)
+    print("")
 
-        elif opcion1 == "2":
-            regVirtual() #Funcion para registrar libro virtual
+def agregarLibroFisico():
+    print("---------------- REGISTRAR LIBRO FISICO ----------------")
+    print("|Escriba los datos que se solicitan:                     |")
+    print("| Titulo del libro                                       |")
+    titulo = input()
+    print("| Autor del libro                                        |")
+    autor = input()
+    print("| Codigo único:                                          |")
+    codigo = int(input())
+    print("| Número de ejemplar                                      |")
+    ejemplar = int(input())
 
-        elif opcion1 == "3":
-            print("Regresando a menu")
-            break
-        
-        else:
-            print("Haz presionado una opcion incorrecta,")
+    nuevoLibroFisico = libroFisico(titulo, autor, codigo, ejemplar)
+    mind.nuevoLibro(nuevoLibroFisico)
+    print("<<<  Libro fisico creado exitosamente  >>>")
+    time.sleep(1)
+    print("")
 
-def gestion():
-    while True:
-        menu3()
-        opcion3=input("opcion elegida: ")
-        if opcion3 =="1":
-            prestar() #funcion para prestar libro 
-
-        elif opcion3 == "2":
-            devolver() #Funcion para devolver libro 
-
-        elif opcion3 == "3":
-            infoLibro() #Funcion para ver informacion del libro 
-
-        elif opcion3 == "4":
-            print("Regresando a menu")
-            break
-        
-        else:
-            print("Haz presionado una opcion incorrecta,")
 
 
 while True:
@@ -67,12 +76,12 @@ while True:
 
     if opcion == "1":
         os.system('cls') #limpia la consola
-        registro()
+        registrarLibro()
 
     elif opcion == "2":
         print("Ha seleccionado la opción 2")
         os.system('cls') 
-        gestion()
+        
 
     elif opcion == "3":
         print("Saliendo del programa...")

@@ -1,14 +1,15 @@
-from clases.materialBiblioteca import materialBiblioteca #importando la clase padre, para heredar
+from clases.materialBiblioteca import materialBiblioteca  # si ejecutas desde /clases
 
-class lbroFisico(materialBiblioteca):
+class libroFisico(materialBiblioteca):
     def __init__(self, titulo, autor, codigo, ejemplar):
-        super.__init__(titulo, autor, codigo) #heredando atributos
-        self.ejemplar == ejemplar #atributo propio
+        super().__init__(titulo, autor, codigo)
+        if not isinstance(ejemplar, int):
+            raise ValueError("El número de ejemplar debe ser un entero")
+        self.ejemplar = ejemplar
 
-#Metodos
+    # Métodos
     def mostrarInfo(self):
         print(f"-" + "-" * 61)
-        # "*" * 5 = "*****"
         print(f"|{"Biblioteca":^61}|")
         print(f"|" + "-" *30 + "|" + "-" * 30 + "|")
         print(f"|{"Titulo":<30}|{self.titulo:<30}|")
@@ -18,9 +19,12 @@ class lbroFisico(materialBiblioteca):
         print(f"|{"No.Ejemplar:":<30}|{self.ejemplar:<30}|")
         print(f"-" + "-" * 61)
 
-#GETTERS
+    # GETTERS
     def getEjemplar(self):
         return self.ejemplar
-#SETTERS
+
+    # SETTERS
     def setEjemplar(self, ejemplar):
-        set.ejemplar == ejemplar
+        if not isinstance(ejemplar, int):
+            raise ValueError("El número de ejemplar debe ser un entero")
+        self.ejemplar = ejemplar

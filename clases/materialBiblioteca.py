@@ -38,13 +38,13 @@ class materialBiblioteca:
 
 #SETTERS-> modificar los atributos
     def setTitulo(self, titulo):
-        self.titulo == titulo
+        self.titulo = titulo
 
     def setAutor(self, autor):
-        self.autor == autor
+        self.autor = autor
 
     def setCodigo(self, codigo):
-        self.codigo == codigo
+        self.codigo = codigo
         
     def setEstado (self, estado):
-        self.estado == estado
+        self.estado = estado

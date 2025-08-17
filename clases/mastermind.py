@@ -6,9 +6,6 @@ class mastermind:
 
     def nuevoLibro(self, libro: materialBiblioteca): #el parametro libro, debe ser una instancia de la clse materialBiblioteca
         self.libros.append(libro) #añade un objeto materialBiblioteca a la lista libros
-#Vehiculo=materialBiblioteca
-#vehiculos=libros
-#vehiculo= libro
 
     def mostrarLibros(self):
         for libro in self.libros:
@@ -24,12 +21,3 @@ class mastermind:
             if libro.titulo == titulo:
                 self.libros.remove(libro)
 
-    def mantenerLibro(self, titulo):
-        for libro in self.libros:
-            if libro.titulo == titulo:
-                libro.mantenimiento()
-
-    def estadoLibro(self, titulo):
-        for libro in self.libros:
-            if libro.titulo == titulo:
-                libro.estado()
